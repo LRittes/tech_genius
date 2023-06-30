@@ -4,16 +4,12 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
 
-import models.Question;
-
-public class QuestionRepository {
-    // mudar retorno para List<Question>
+public class AnswerRepository {
     public String getQuestions() throws Exception {
         try {
             // Cria a URL da requisição
-            URL url = new URL("http://localhost:8080/question");
+            URL url = new URL("http://localhost:8080/answer");
 
             // Abre a conexão
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
