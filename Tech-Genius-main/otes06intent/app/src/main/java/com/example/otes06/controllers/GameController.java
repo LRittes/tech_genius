@@ -37,6 +37,42 @@ public class GameController {
         return new User();
     }
 
+    public List<Question> getQuestionToPlay(int easy, int medium, int hard){
+        List<Question> allQuestions = getQuestions();
+
+        List<Question> easyQuestions = shuffleList(allQuestions.subList(0,10));
+        List<Question> mediumQuestions = shuffleList(allQuestions.subList(10,20));
+        List<Question> hardQuestions = shuffleList(allQuestions.subList(20,30));
+
+        List<Question> questionToPlay = easyQuestions.subList(0,easy);
+        questionToPlay.addAll(mediumQuestions.subList(0,medium));
+        questionToPlay.addAll(hardQuestions.subList(0,hard));
+
+        return shuffleList(questionToPlay);
+    }
+
+    public List<User> getRanking(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        TypeReference<List<Map<String, String>>> typeReference = new TypeReference<>() {};
+        var utils = new Utils();
+        String jsonString = utils.userRanking;
+        List<Map<String, String>> listaMapQuestions = new ArrayList<>();
+
+        try {
+            listaMapQuestions = objectMapper.readValue(jsonString, typeReference);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        List<User> userList = new ArrayList<>();
+        for(Map<String,String> json : listaMapQuestions){
+            User user = new User(json.get("name"),Integer.parseInt(json.get("score")));
+            userList.add(user);
+        }
+
+        return userList;
+    }
+
     public List<Question> getQuestions(){
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -46,11 +82,9 @@ public class GameController {
         List<Map<String, String>> listaMapQuestions = new ArrayList<>();
         try {
             listaMapQuestions = objectMapper.readValue(jsonString, typeReference);
-            Log.i("RESPONSETest",listaMapQuestions.get(0).toString());
 
         } catch (Exception e){
             e.printStackTrace();
-            Log.i("RESPONSETest",e.toString());
 
         }
 
@@ -62,7 +96,7 @@ public class GameController {
             questionList.add(question);
         }
 
-        return shuffleList(questionList);
+        return questionList;
     }
 
     public List<Answer> getAnswers(){
@@ -72,21 +106,16 @@ public class GameController {
 
         ObjectMapper objectMapper = new ObjectMapper();
         TypeReference<List<Map<String,String>>> typeReference = new TypeReference<>() {};
-//        TypeReference<List<Answer>> typeReference = new TypeReference<List<Answer>>() {};
-
-
 
 
         List<Map<String, String>> answerList = new ArrayList<>();
         try {
             answerList = objectMapper.readValue(jsonString, typeReference);
-//            Log.i("RESPONSETest2",answerList.get(0).toString());
 
 
         } catch (Exception e){
             e.printStackTrace();
-//            Log.i("RESPONSETest2",e.toString());
-
+//
         }
 
 

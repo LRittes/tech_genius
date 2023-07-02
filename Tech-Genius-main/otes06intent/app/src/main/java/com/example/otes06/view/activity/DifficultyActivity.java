@@ -16,7 +16,11 @@ import android.widget.Toast;
 
 import com.example.otes06.R;
 import com.example.otes06.controllers.GameController;
+import com.example.otes06.models.Question;
 import com.example.otes06.models.User;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 public class DifficultyActivity extends AppCompatActivity {
     @Override
@@ -44,18 +48,27 @@ public class DifficultyActivity extends AppCompatActivity {
         layout.addView(textView, textParams);
 
         // Cria os botões em estilo de hambúrguer
-        Button button1 = new Button(this);
-        button1.setText("Fácil");
-        button1.setBackgroundResource(R.drawable.button_background);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button easyBtn = new Button(this);
+        easyBtn.setText("Fácil");
+        easyBtn.setBackgroundResource(R.drawable.button_background);
+        easyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Inicia a tela de seleção de dificuldade e passa o nome de usuário como extra
                 Intent quizIntent = new Intent(DifficultyActivity.this, DefaultGamePage.class);
+
                 Intent intent = getIntent();
+
                 User user = (User) intent.getSerializableExtra("user");
+
                 quizIntent.putExtra("user",user);
-                Log.i("player",user.getName());
+
+                Gson gson = new Gson();
+                List<Question> questionsToPlay = gc.getQuestionToPlay(10,7,3);
+                String listaJson = gson.toJson(questionsToPlay);
+
+                quizIntent.putExtra("questionsToPlay", listaJson);
+
                 startActivity(quizIntent);
             }
         });
@@ -71,15 +84,21 @@ public class DifficultyActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 User user = (User) intent.getSerializableExtra("user");
                 quizIntent.putExtra("user",user);
-                Log.i("player",user.getName());
+
+                Gson gson = new Gson();
+                List<Question> questionsToPlay = gc.getQuestionToPlay(5,10,5);
+                String listaJson = gson.toJson(questionsToPlay);
+
+                quizIntent.putExtra("questionsToPlay", listaJson);
+
                 startActivity(quizIntent);
             }
         });
 
-        Button button3 = new Button(this);
-        button3.setText("Difícil");
-        button3.setBackgroundResource(R.drawable.button_background);
-        button3.setOnClickListener(new View.OnClickListener() {
+        Button hardBtn = new Button(this);
+        hardBtn.setText("Difícil");
+        hardBtn.setBackgroundResource(R.drawable.button_background);
+        hardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Inicia a tela de seleção de dificuldade e passa o nome de usuário como extra
@@ -87,7 +106,13 @@ public class DifficultyActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 User user = (User) intent.getSerializableExtra("user");
                 quizIntent.putExtra("user",user);
-                Log.i("player",user.getName());
+
+                Gson gson = new Gson();
+                List<Question> questionsToPlay = gc.getQuestionToPlay(3,7,10);
+                String listaJson = gson.toJson(questionsToPlay);
+
+                quizIntent.putExtra("questionsToPlay", listaJson);
+
                 startActivity(quizIntent);
             }
         });
@@ -98,9 +123,9 @@ public class DifficultyActivity extends AppCompatActivity {
         buttonParams.width = getResources().getDimensionPixelSize(R.dimen.button_width);
 
         // Adiciona os botões ao layout principal com configurações de layout
-        layout.addView(button1, buttonParams);
+        layout.addView(easyBtn, buttonParams);
         layout.addView(button2, buttonParams);
-        layout.addView(button3, buttonParams);
+        layout.addView(hardBtn, buttonParams);
 
         // Define o layout principal como o layout da atividade
         setContentView(layout);

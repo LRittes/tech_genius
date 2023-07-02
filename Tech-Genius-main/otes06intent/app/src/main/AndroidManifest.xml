@@ -14,21 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Otes06intent"
-        tools:targetApi="31"
-        android:usesCleartextTraffic="true">
-
-    <activity
-            android:name=".view.activity.DefaultGamePage"
-            android:exported="false" />
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
         <activity
             android:name=".view.activity.RankingActivity"
+            android:exported="false" >
+
+        </activity>
+        <activity
+            android:name=".view.activity.DefaultGamePage"
             android:exported="false" />
         <activity
             android:name=".view.activity.DifficultyActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,9 +38,7 @@
         </activity>
         <activity
             android:name=".view.activity.LoginActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

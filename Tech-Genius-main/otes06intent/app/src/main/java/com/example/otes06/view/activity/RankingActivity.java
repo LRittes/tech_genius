@@ -1,45 +1,60 @@
 package com.example.otes06.view.activity;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.util.TypedValue;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.example.otes06.R;
+import com.example.otes06.controllers.GameController;
+import com.example.otes06.models.User;
+
+import java.util.List;
 
 public class RankingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ranking);
 
-        // Obtém o Intent que iniciou a MainActivity
-        Intent intent = getIntent();
+        LinearLayout parentContainer = findViewById(R.id.container);
 
-
-        // Cria um layout principal
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-        layout.setGravity(Gravity.CENTER_HORIZONTAL);
-
-        // Cria o TextView com o texto "Campeões"
-        TextView textView = new TextView(this);
-        textView.setText("Campeões");
-        textView.setTextSize(32);
-
-        // Adiciona o TextView ao layout principal com configurações de layout
-        LinearLayout.LayoutParams textParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        textParams.setMargins(0,80,0,0);
-        layout.addView(textView, textParams);
+        GameController gc = new GameController();
+        List<User> users = gc.getRanking();
+        for (int u = 0 ; u < users.size(); u++) {
 
 
-        // Define o layout principal como o layout da atividade
-        setContentView(layout);
+            User user = users.get(u);
+            String dots = "";
+            String stringScore = String.valueOf(user.getScore());
+
+            for (int i = 0; i < 50 - stringScore.length() - user.getName().length(); i++) {
+                dots += ".";
+            }
+
+            TextView textView = new TextView(this);
+            textView.setId(u);
+            textView.setText(user.getName() + " " + dots + " " + stringScore);
+            textView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            textView.setTextSize(20);
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+
+
+            layoutParams.setMargins(20, 0, 20, 50);
+
+            textView.setLayoutParams(layoutParams);
+
+            parentContainer.addView(textView);
+        }
     }
-
 }
