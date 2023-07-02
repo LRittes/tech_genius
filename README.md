@@ -23,7 +23,7 @@ O projeto possui as seguintes funcionalidades:
 O projeto segue a arquitetura MVC (Model-View-Controller) do Spring. A estrutura de diretórios é organizada da seguinte forma:
 
 - `src/main/java`: contém as classes Java do projeto.
-  - `com.example.projeto`: pacote principal do projeto.
+  - `com.api.techgenius`: pacote principal do projeto.
     - `controller`: contém as classes responsáveis por receber as requisições HTTP e controlar o fluxo da aplicação.
     - `model`: contém as classes de modelo que representam as entidades do sistema.
     - `repository`: contém as interfaces e classes de repositório que permitem o acesso aos dados.
