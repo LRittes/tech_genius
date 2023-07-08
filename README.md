@@ -1,4 +1,4 @@
-# Relatório do Projeto Spring
+# Relatório do Projeto Spring/Android
 
 ## Introdução
 
@@ -30,10 +30,23 @@ O projeto segue a arquitetura MVC (Model-View-Controller) do Spring. A estrutura
     - `service`: contém as classes de serviço que implementam a lógica de negócio.
     - `dto`: contém as classes intermediária do banco e da aplicação.
 
+## Arquitetura do Frontend
+
+O projeto segue a arquitetura MVC (Model-View-Controller). A estrutura de diretórios é organizada da seguinte forma:
+
+
+- `com.example.otes06`: pacote principal do projeto.
+  - `controller`: contém as classes responsáveis por receber as requisições HTTP e controlar o fluxo da aplicação.
+  - `model`: contém as classes de modelo que representam as entidades do sistema.
+  - `repository`: contém as interfaces e classes de repositório que permitem o acesso aos dados.
+  - `utils`: contém as classes que auxiliam a lógica de negócio.
+  - `view`: contém as classes de apresentação (telas).
+
 ## Informações para Execução
 
 Para executar o projeto, é necessário ter instalado em sua máquina:
 
+### Backend
 - Java Development Kit (JDK) versão 17 ou superior
 - Apache Maven versão 3.6.3 ou superior
 - PostgreSQL versão 15.3 ou superior
@@ -44,9 +57,25 @@ Siga as etapas abaixo para executar o projeto:
 
 2. Abra o projeto no VS code e espere o java reconhecer o projeto e baixar os pacotes.
 
-3. Clique no botão ( Run ) que aparece a cima da função main; 
+3. Tenha criado no postgres as tabelas nescessárias (resources/application.properties)
 
-4. Acesse a aplicação em seu navegador web através do seguinte URL: `http://localhost:8080`.
+4. Clique no botão ( Run ) que aparece a cima da função main; 
+
+5. Acesse a aplicação em seu navegador web através do seguinte URL: `http://localhost:8080`.
+
+
+### Frontend
+- Java Development Kit (JDK) versão 17 ou superior
+
+Siga as etapas abaixo para executar o projeto:
+
+1. Clone o repositório do projeto para sua máquina local.
+
+2. Abra o projeto no Android Studio e espere o java reconhecer o projeto e baixar os pacotes.
+
+3. Crie um emulador com api 31 ou superior 
+
+4. Clique no botão ( Run ou play) que aparece na barra superior do Android Studio; 
 
 ## Considerações Finais
 
