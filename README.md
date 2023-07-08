@@ -1,30 +1,22 @@
-# Relatório Tech Genius
+# Relatório do Projeto Spring
 
 ## Introdução
 
-O objetivo deste relatório, é apresentar informações relevantes sobre o projeto desenvolvido para a disciplina Programação para Dispositivos Móveis, ministrada pelo professor Allan Rodrigo Leite. 
-
-O projeto tem como objetivo, criar uma aplicação mobile com foco educacional, na área da computação. O aplicativo funciona como uma espécie de quiz, na qual, o jogador pode potencializar e aprimorar seus conhecimentos na área da tecnologia da informação. Com diferentes níveis, e funcionalidades, o APP possui diversas funções, buscando o maior nível de diversão e desafio para o jogador, procurando deixar o usuário o mais engajado possivel.
+O objetivo deste relatório é apresentar informações relevantes sobre o projeto desenvolvido utilizando o framework Spring para o backend e Android Nativo no front. O projeto tem como finalidade criar uma aplicação mobile no qual é um jogo de perguntas e respostas.
 
 ## Visão Geral
 
-O projeto foi desenvolvido utilizando a linguagem de programação Java (versão 17) tanto no backend quanto no frontend e o framework Spring (versão 3.1.1). A aplicação web, que consiste em uma API REST, permite que o usuários crie seus jogador, além de visualizar uma lista de perguntas e respostas, usadas no jogo, além de resgatar jogadores e pontuação para rankear os que obtiveram mais pontuação.
-
-Para o desenvolvimento das telas de interação (Actions), foi utilizado todo o conhecimento adquirido em sala de aula, e para melhorar a prática e conhecimento, foram desenvolvidas de diferentes modos. Um deles é através de código e outro é utilizando XML, assim como vimos durante as aulas.
-
-O projeto utiliza o Spring MVC para o controle das requisições HTTP, o Spring Data JPA para a persistência dos dados e o PostgreSQL como banco de dados sql.
+O projeto foi desenvolvido utilizando a linguagem de programação Java (versão 17) tanto no backend quanto no front e o framework Spring (versão 3.1.1). A aplicação web permite que os usuários criem seu player, além de visualizarem uma lista de perguntas e respostas existentes. O projeto utiliza o Spring MVC para o controle das requisições HTTP, o Spring Data JPA para a persistência dos dados e o PostgreSQL como banco de dados sql.
 
 ## Funcionalidades Implementadas
 
 O projeto possui as seguintes funcionalidades:
 
-1. Cadastro do usuário: os usuários podem criar seu jogador, informando o nome.
+1. Cadastro do usuário: os usuários podem criar seu player, informando o nome.
 
-2. Escolha da dificuldade: os usuários podem escolher entre os níveis, fácil, moderado e difícil.
+2. Escolha de dificuldade: os usuários podem escolher dificuldades diferentes.
 
-3. Listagem de Perguntas: as perguntas já são préviamente cadastradas e são exibidas aleatóriamente, uma por vez para o usuário em um total de 20 escolhidas entre as 30 possiveis.
-
-4. É possível visualizar um ranking com a pontuação de cada usuário
+3. Listagem de Perguntas: as perguntas já são préviamente cadastradas e são exibidas uma por vez para o usuário em um total de 20 escolhidas entre as 30 possiveis.
 
 ## Arquitetura do Backend
 
@@ -45,56 +37,28 @@ Para executar o projeto, é necessário ter instalado em sua máquina:
 - Java Development Kit (JDK) versão 17 ou superior
 - Apache Maven versão 3.6.3 ou superior
 - PostgreSQL versão 15.3 ou superior
-- Spring (versão 3.1.1)
 
 Siga as etapas abaixo para executar o projeto:
 
-1. Crie um novo banco de dados com o nome tech_genius_db na porta 5432 (Se desejar, mude nas configurações do projeto o nome e a porta)
+1. Clone o repositório do projeto para sua máquina local.
 
-2. Coloque usuário e senha de acesso como postgres (Se desejar, mude nas configurações do projeto api\src\main\resources\application.properties)
+2. Abra o projeto no VS code e espere o java reconhecer o projeto e baixar os pacotes.
 
-3. Clone o repositório do projeto para sua máquina local.
+3. Clique no botão ( Run ) que aparece a cima da função main; 
 
-4. Abra a pasta api e execute o projeto para deixar online a API REST.
-
-5. Abra a pasta otes06intent como novo projeto no Android Studio e espere o java reconhecer e baixar os pacotes necessários.
-
-6. Clique no botão ( Run ) que aparece a cima da função main; 
-
-7. Caso deseje, acesse a aplicação REST em seu navegador web através da seguinte URL: `http://localhost:8080`.
+4. Acesse a aplicação em seu navegador web através do seguinte URL: `http://localhost:8080`.
 
 ## Considerações Finais
 
-O projeto desenvolvido, com a utilização de diversos recursos como framework, linguagem java, arquitetura, tecnologias como, Spring MVC, Spring Data JPA, Postgres e Android Nativo, foram um grande desafio e a experiência teve grande efeito, para melhorar e aprimorar nossos conhecimentos em relação ao desenvolvimento mobile e sobre outros, como o desenvolvimento de API, arquitetura e banco de dados. As funcionalidades implementadas permitem aos usuários criar o seu jogador, além de visualizar uma lista das perguntas existentes. O projeto segue a arquitetura MVC e utiliza boas práticas de desenvolvimento.
+O projeto Spring desenvolvido para o jogo demonstra a utilização de diversos recursos do framework, como o Spring MVC, o Spring Data JPA e o Postgres. As funcionalidades implementadas permitem aos usuários criar o seu player, além de visualizar uma lista das perguntas existentes. O projeto segue a arquitetura MVC e utiliza boas práticas de desenvolvimento.
 
 ## Próximos Passos
 
-Algumas melhorias e funcionalidades que futuramente podem ser implementadas no projeto são:
+Algumas melhorias e funcionalidades adicionais que podem ser implementadas no projeto são:
 
-1. Adicionar autenticação e senha de usuários para garantir a segurança da aplicação.
-2. Implementar mais perguntas e respostas.
-3. Adicionar filtros de busca, para permitir o jogador, especificar somente os assuntos desejados.
-4. Melhorar a interface do usuário com animações, gamificação e recompensas.
+1. Adicionar autenticação de usuários para garantir a segurança da aplicação.
+2. Implementar mais perguntas e respoasta para o usuário interagir mais.
+3. Adicionar filtros de busca para permitir que os usuários possa jogar sobre assuntos que dominam mais ou não.
+4. Melhorar a interface de usuário com animações etc.
 
-## MVP
-
-![](./imagens/Play.gif)
-
-### Página de login
-![](./imagens/LoginPage.jpg)
-
-### Página Inicial
-![](./imagens/MainPage.jpg)
-
-### Página de Dificuldade
-![](./imagens/DificultyPage.jpg)
-
-### Página Ranking
-![](./imagens/RankingPage.jpg)
-
-### Página Quiz
-![](./imagens/QuizPage.jpg)
-
-![](./imagens/QuizPage_Incorrect.jpg)
-
-![](./imagens/QuizPage_Correct.jpg)
+Essas são apenas algumas ideias para futuras melhorias no projeto, visando aprimorar ainda mais a experiência dos usuários.
